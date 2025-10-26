@@ -110,19 +110,23 @@
     "buildPresets": [
         {
             "name": "windows-ci",
-            "configurePreset": "Win-x64-Debug"
+            "configurePreset": "Win-x64-Debug",
+            "targets": "usearch12"
         },
         {
             "name": "linux-debug",
-            "configurePreset": "linux-debug"
+            "configurePreset": "linux-debug",
+            "targets": "usearch12"
         },
         {
             "name": "linux-arm64-ci",
-            "configurePreset": "linux-arm64-ci"
+            "configurePreset": "linux-arm64-ci",
+            "targets": "usearch12"
         },
         {
             "name": "macos-ci",
-            "configurePreset": "macos-ci"
+            "configurePreset": "macos-ci",
+            "targets": "usearch12"
         }
     ]
 }
