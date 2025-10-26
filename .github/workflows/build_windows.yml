@@ -1,7 +1,7 @@
 name: build_windows
 
 on:
-  workflow_dispatch:
+  push:
 
 permissions:
   contents: read
@@ -28,4 +28,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
           name: usearch12-windows-binary.exe
-          path: ${{ github.workspace }}\out\build\Win-x64-Debug\usearch12.exe
+          path: ${{ github.workspace }}\out\build\Win-x64-Release\usearch12.exe
