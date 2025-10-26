@@ -13,13 +13,17 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Build Project
-      uses: threeal/cmake-action@v2.1.0
-      with:
-        build-dir: build
-        generator: Ninja
-        args: --preset=Win-x64-Debug
-        build-args: --preset=windows-ci
+    - name: Configure and Build
+      shell: cmd
+      run: |
+        call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" -arch=amd64 -host_arch=amd64
+        IF %ERRORLEVEL% NEQ 0 exit /B %ERRORLEVEL%
+        cl /Bv
+        set CXX=cl
+        set CC=cl
+        cmake --preset Win-x64-Debug
+        IF %ERRORLEVEL% NEQ 0 exit /B %ERRORLEVEL%
+        cmake --build --preset windows-ci -- -k0
     #- name: Upload binary artifact
     #  uses: actions/upload-artifact@v4
     #  with:
