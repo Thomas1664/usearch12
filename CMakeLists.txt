@@ -21,12 +21,18 @@ file(GLOB SRC_FILES CONFIGURE_DEPENDS
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h"
 )
 
+# link with pthreads
+find_package(Threads REQUIRED)
+
 add_executable(usearch12)
 target_sources(usearch12 PRIVATE ${SRC_FILES})
-target_link_libraries(usearch12 PRIVATE zlibstatic)
+target_link_libraries(usearch12 PRIVATE zlibstatic Threads::Threads)
 
 target_compile_features(usearch12 PUBLIC cxx_std_11)
 
 if(MSVC)
     target_compile_definitions(usearch12 PRIVATE _CRT_SECURE_NO_WARNINGS)
+endif()
+if(UNIX)
+    target_compile_options(usearch12 PRIVATE -ffast-math)
 endif()
