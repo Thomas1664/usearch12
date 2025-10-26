@@ -29,3 +29,4 @@ jobs:
       with:
           name: usearch12-windows-binary.exe
           path: ${{ github.workspace }}\out\build\Win-x64-Release\usearch12.exe
+          if-no-files-found: error
