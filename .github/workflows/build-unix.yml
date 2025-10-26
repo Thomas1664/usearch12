@@ -1,7 +1,7 @@
 name: build_unix
 
 on:
-  push:
+  workflow_dispatch:
 jobs:
   build:
     strategy:
