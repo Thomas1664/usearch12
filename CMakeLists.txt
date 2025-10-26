@@ -22,6 +22,8 @@ add_executable(usearch12)
 target_sources(usearch12 PRIVATE ${SRC_FILES})
 target_link_libraries(usearch12 PRIVATE zlib)
 
+target_compile_features(usearch12 PUBLIC cxx_std_11)
+
 if(MSVC)
     target_compile_definitions(usearch12 PRIVATE _CRT_SECURE_NO_WARNINGS)
 endif()
