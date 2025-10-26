@@ -33,4 +33,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
             name: ${{ matrix.artifact }}
-            path: ${{ GITHUB_WORKSPACE }}/out/build/${{ matrix.preset }}/usearch12
+            path: ${{ github.workspace }}/out/build/${{ matrix.preset }}/usearch12
