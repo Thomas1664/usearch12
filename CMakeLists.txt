@@ -21,3 +21,7 @@ file(GLOB SRC_FILES CONFIGURE_DEPENDS
 add_executable(usearch12)
 target_sources(usearch12 PRIVATE ${SRC_FILES})
 target_link_libraries(usearch12 PRIVATE zlib)
+
+if(MSVC)
+    target_compile_definitions(usearch12 PRIVATE _CRT_SECURE_NO_WARNINGS)
+endif()
