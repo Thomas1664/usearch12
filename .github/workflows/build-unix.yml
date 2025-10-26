@@ -1,0 +1,36 @@
+name: build_aarch64
+
+on:
+  push:
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            preset: linux-debug
+            artifact: usearch12.linux-binary
+          - os: ubuntu-24.04-arm
+            preset: linux-arm64-ci
+            artifact: usearch12.arch64-binary
+          - os: macos-14
+            preset: macos-ci
+            artifact: usearch12-osx-m-binary
+          - os: macos-15-intel
+            preset: macos-ci
+            artifact: usearch12-osx-binary
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure and Build
+        run: |
+          cmake --preset ${{ matrix.preset }}
+          cmake --build --preset ${{ matrix.preset }} -- -k0
+      - name: Upload binary artifact
+        uses: actions/upload-artifact@v4
+        with:
+            name: ${{ matrix.artifact }}
+            path: ${{ GITHUB_WORKSPACE }}/out/build/${{ matrix.preset }}/usearch12

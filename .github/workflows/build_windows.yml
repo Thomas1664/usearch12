@@ -24,8 +24,8 @@ jobs:
         cmake --preset Win-x64-Debug
         IF %ERRORLEVEL% NEQ 0 exit /B %ERRORLEVEL%
         cmake --build --preset windows-ci -- -k0
-    #- name: Upload binary artifact
-    #  uses: actions/upload-artifact@v4
-    #  with:
-    #      name: usearch12-windows-binary.exe
-    #      path: D:\a\usearch12\usearch12\src\x64\Release\usearch12.exe
+    - name: Upload binary artifact
+      uses: actions/upload-artifact@v4
+      with:
+          name: usearch12-windows-binary.exe
+          path: ${{ GITHUB_WORKSPACE }}\out\build\Win-x64-Debug\usearch12.exe

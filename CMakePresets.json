@@ -70,7 +70,7 @@
             }
         },
         {
-            "name": "linux-debug",
+            "name": "linux-ci",
             "inherits": [
                 "base",
                 "debug",
@@ -79,7 +79,7 @@
         },
         {
             "name": "linux-arm64-ci",
-            "inherits": [ "linux-debug" ],
+            "inherits": [ "linux-ci" ],
             "cacheVariables": {
                 "CMAKE_SYSTEM_PROCESSOR": "aarch64"
             }
@@ -114,8 +114,8 @@
             "targets": "usearch12"
         },
         {
-            "name": "linux-debug",
-            "configurePreset": "linux-debug",
+            "name": "linux-ci",
+            "configurePreset": "linux-ci",
             "targets": "usearch12"
         },
         {
