@@ -6,6 +6,9 @@ set(BUILD_SHARED_LIBS OFF)
 
 include(FetchContent)
 
+# configure zlib
+set(ZLIB_BUILD_EXAMPLES OFF)
+
 FetchContent_Declare(
     zlib
     GIT_REPOSITORY https://github.com/madler/zlib.git
@@ -20,7 +23,7 @@ file(GLOB SRC_FILES CONFIGURE_DEPENDS
 
 add_executable(usearch12)
 target_sources(usearch12 PRIVATE ${SRC_FILES})
-target_link_libraries(usearch12 PRIVATE zlib)
+target_link_libraries(usearch12 PRIVATE zlibstatic)
 
 target_compile_features(usearch12 PUBLIC cxx_std_11)
 
