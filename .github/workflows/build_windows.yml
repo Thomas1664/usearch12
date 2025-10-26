@@ -21,9 +21,9 @@ jobs:
         cl /Bv
         set CXX=cl
         set CC=cl
-        cmake --preset Win-x64-Debug
+        cmake --preset Win-x64-Release
         IF %ERRORLEVEL% NEQ 0 exit /B %ERRORLEVEL%
-        cmake --build --preset windows-ci -- -k0
+        cmake --build --preset windows-release -- -k0
     - name: Upload binary artifact
       uses: actions/upload-artifact@v4
       with:

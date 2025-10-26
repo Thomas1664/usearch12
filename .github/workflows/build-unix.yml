@@ -1,4 +1,4 @@
-name: build_aarch64
+name: build_unix
 
 on:
   push:
@@ -9,16 +9,16 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            preset: linux-ci
+            preset: linux-release
             artifact: usearch12.linux-binary
           - os: ubuntu-24.04-arm
-            preset: linux-arm64-ci
+            preset: linux-arm64-release
             artifact: usearch12.arch64-binary
           - os: macos-14
-            preset: macos-ci
+            preset: macos-release
             artifact: usearch12-osx-m-binary
           - os: macos-15-intel
-            preset: macos-ci
+            preset: macos-release
             artifact: usearch12-osx-binary
     runs-on: ${{ matrix.os }}
     steps:
