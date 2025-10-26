@@ -18,7 +18,8 @@ jobs:
       with:
         build-dir: build
         generator: Ninja
-        args: --preset=windows-ci
+        args: --preset=Win-x64-Debug
+        build-args: --preset=windows-ci
     #- name: Upload binary artifact
     #  uses: actions/upload-artifact@v4
     #  with:
